@@ -1,0 +1,31 @@
+<html>
+  <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <tr><td>
+     <label for="storyline">Enter your story line:</label>
+     <input type="text" id="storyline" name="storyline">
+     <button id="socks.shirt.pants" type='button'>Submit</button>
+     <div id='response'></div>
+    </td></tr>
+  </body>
+  <script>
+   $(document).ready(function() {
+      $("button").click(function(event){
+         var storyline =$("#storyline").val();;
+         $.ajax({
+            url: "/get_story",
+            type: "get",
+            data: {storyline: storyline},
+           success: function(response) {
+           $("#response").html(response);
+         },
+          error: function(xhr) {
+        //Do Something to handle error
+        }
+       });
+     });
+   });
+  </script>
+</html>
